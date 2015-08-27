@@ -90,6 +90,7 @@ spine.AnimationState = function (stateData)
     this.events = [];
 };
 spine.AnimationState.prototype = {
+    animationSpeed:1,
     onStart: null,
     onEnd: null,
     onComplete: null,
@@ -103,7 +104,7 @@ spine.AnimationState.prototype = {
             var current = this.tracks[i];
             if (!current) continue;
 
-            current.time += delta * current.timeScale;
+            current.time += delta * current.timeScale * this.animationSpeed;
             if (current.previous)
             {
                 var previousDelta = delta * current.previous.timeScale;
